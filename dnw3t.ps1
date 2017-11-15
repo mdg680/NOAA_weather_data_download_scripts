@@ -31,18 +31,18 @@ For ($i = 0; $i -Lt 7; $i++){
         $full_path = $data_root_path + $data_sub_path
         
         $dest_file = "multi." + ($date - $i) + "." + $hour_reading_stamps[$y]
-        $w_data_folder_path = "C:\Users\pho\nww3grb\$dest_file.grb2"
+        $w_multi_data_folder_path = "C:\Users\pho\nww3grb\$dest_file.grb2"
 
-        if(Test-Path $w_data_folder_path){
+        if(Test-Path $w_multi_data_folder_path){
             $a.WarningBackgroundColor = "darkblue"
             $a.WarningForegroundColor = "yellow"
-            Write-Warning "File already exists at: $w_data_folder_path"
-            #echo "file already exists: $w_data_folder_path"
+            Write-Warning "File already exists at: $w_multi_data_folder_path"
+            #echo "file already exists: $w_multi_data_folder_path"
         }
         else{
             echo "Downloading NWW3 data file from adress: $full_path"
             try{
-                $WebClient.DownloadFile($full_path, $w_data_folder_path)
+                $WebClient.DownloadFile($full_path, $w_multi_data_folder_path)
             }
             catch{
                 $a.WarningBackgroundColor = "red"
@@ -72,19 +72,19 @@ For ($i = 0; $i -Lt 120; $i++){
 
     # echo "full path =======> $full_path2"
     
-    $dest_file2 = "sstv2." + ($d)
-    $w_data_folder_path2 = "C:\Users\pho\sstv2grb\$dest_file2.grib2"
+    $dest_file2 = "sst." + ($d)
+    $w_sst_data_folder_path = "C:\Users\pho\sstv2grb\old_naming_format\$dest_file2.grib2"
 
-    if(Test-Path $w_data_folder_path2){
-        #echo "file already exists: $w_data_folder_path2"
+    if(Test-Path $w_sst_data_folder_path){
+        #echo "file already exists: $w_sst_data_folder_path"
         $a.WarningBackgroundColor = "darkblue"
         $a.WarningForegroundColor = "yellow"
-        Write-Warning "File already exists at: $w_data_folder_path"
+        Write-Warning "File already exists at: $w_sst_data_folder_path"
     }
     else{
         echo "Downloading SST data file from adress: $full_path2"
         try{
-            $WebClient.DownloadFile($full_path2, $w_data_folder_path2)
+            $WebClient.DownloadFile($full_path2, $w_sst_data_folder_path)
         }
         catch{
             $a.WarningBackgroundColor = "red"
