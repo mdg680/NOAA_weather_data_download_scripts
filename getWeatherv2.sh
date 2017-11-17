@@ -1,19 +1,23 @@
 
-counter=1
+counterSST=1
 counterMulti=0
 
 declare -a timestamps=("00" "06" "12" "18")
 
+# Get SST data
+
 data_root_path="https://www.ncei.noaa.gov/data/sea-surface-temperature-optimum-interpolation/access/"
 
-while [ $counter -le 30 ]
+while [ $counterSST -le 30 ]
 do
     declare dd=$( date --date="-$counter days" +'%Y%m%d')
     data_sub_path=$data_root_path$dd"120000-NCEI/0-fv02/"$dd"120000-NCEI-L4_GHRSST-SSTblend-AVHRR_OI-GLOB-v02.0-fv02.0.nc"
     dest_file_name="sst."$dd".grib2"
     wget -nc -O $dest_file_name $data_sub_path
-    ((counter++))
+    ((counterSST++))
 done
+
+# Get NWW3 Data
 
 data_root_path="ftp://ftpprd.ncep.noaa.gov/pub/data/nccf/com/wave/prod/"
 
