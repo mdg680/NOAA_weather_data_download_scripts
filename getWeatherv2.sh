@@ -1,6 +1,6 @@
 
 counterSST=1
-counterMulti=0
+counterMulti=1
 
 declare -a timestamps=("00" "06" "12" "18")
 
